@@ -1,0 +1,4 @@
+#!/bin/sh
+date >> mirror.log
+git push --mirror >> mirror.log
+

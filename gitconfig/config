@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[remote "public"]
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	url = git@github.com:exsolvi/mothership.git
+[remote "exsolvi"]
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	url = ssh://git@git.exsolvi.se/home/git/mothership
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
