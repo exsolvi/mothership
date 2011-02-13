@@ -6,6 +6,7 @@ if [ ! -d .git.versioned ]; then
     TMP=$(mktemp -d)
     cd $TMP
     git clone $PREV fullrepos > /dev/null
+    git checkout meta
     cp fullrepos/.git.versioned/hooks/* $PREV/hooks/
     chmod u+x $PREV/hooks/*
     cd $PREV
@@ -15,8 +16,10 @@ if [ ! -d .git.versioned ]; then
 else
   if [ x$0 == x"pre-commit" ]; then
     echo "Pre commit"
-    cp .git.versioned/hooks/* .git/hooks/
-    chmod u+x $PREV/hooks/*
+    if [ -d .git.versioned ]; then
+      cp .git.versioned/hooks/* .git/hooks/
+      chmod u+x $PREV/hooks/*
+    fi
   fi
   test -f $0.client && $0.client
 fi
