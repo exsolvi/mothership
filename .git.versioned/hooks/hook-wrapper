@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [ ! -d .git.versioned ]; then
+if [ ! $(git config core.bare) == true ]; then
   if [ $0 == x"post-receive" ]; then
     # We are running on server and should update scripts"
     PREV=$(pwd)
