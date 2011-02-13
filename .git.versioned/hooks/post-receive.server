@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+git push --mirror git-mirror
+git push --mirror github
+
