@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [ ! $(git config core.bare) == true ]; then
+if [ $(git config core.bare) == true ]; then
   if [ $0 == x"post-receive" ]; then
     # We are running on server and should update scripts"
     PREV=$(pwd)
@@ -12,7 +12,7 @@ if [ ! $(git config core.bare) == true ]; then
     cd $PREV
     rm -rf $TMP
   fi
-  test -f $0 && $0.server
+  test -f $0.server && $0.server
 else
   if [ x$0 == x"pre-commit" ]; then
     echo "Pre commit"
